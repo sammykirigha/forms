@@ -1,14 +1,16 @@
 import { ErrorMessage, Field, Formik, Form } from "formik";
-import React, { useState } from "react";
+import React, { createRef, useRef, useState } from "react";
 import * as Yup from "yup";
 import EmailField from "./EmailField";
 
 const FormikForm = (props) => {
+    const fileInput = createRef()
     const onSubmit = (values, actions) => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve();
                 console.log({ values });
+                // console.log(fileInput.current.value);
             }, 2000);
         });
     };
@@ -101,6 +103,15 @@ const FormikForm = (props) => {
                             <ErrorMessage name="confirmPassword">
                                 {(error) => <p className="text-md text-red-600">{error}</p>}
                             </ErrorMessage>
+                        </div>
+
+                        <div className="flex flex-col gap-2 mt-4">
+                            <label>Upload file(s)</label>
+                            <Field
+                            //    ref={fileInput}
+                                className="outline outline-gray-50 rounded-md "
+                                // type="file"
+                            />
                         </div>
                         <div className="flex flex-row gap-3 items-center mt-5">
                             <Field name="rememberMe" type="checkbox" />
