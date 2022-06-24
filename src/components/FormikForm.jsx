@@ -1,6 +1,7 @@
 import { ErrorMessage, Field, Formik, Form } from "formik";
 import React, { useState } from "react";
 import * as Yup from "yup";
+import EmailField from "./EmailField";
 
 const FormikForm = (props) => {
     const onSubmit = (values, actions) => {
@@ -72,12 +73,7 @@ const FormikForm = (props) => {
                 }) => (
                     <Form>
                         <div className="flex flex-col gap-2">
-                            <label>Email</label>
-                            <Field
-                                name="email"
-                                className="outline outline-gray-50 rounded-md"
-                                type="email"
-                            />
+                           <EmailField name="email" type="email" label="Enter email"  />
                             <ErrorMessage name="email">
                                 {(error) => <p className="text-md text-red-600">{error}</p>}
                             </ErrorMessage>
